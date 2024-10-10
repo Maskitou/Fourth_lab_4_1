@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     private fun showResult() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Конец")
-            .setMessage("У вас $correctAnswersCount ответов из ${questions.size} правильные!")
+            .setMessage("У вас $correctAnswersCount ответа из ${questions.size} правильные!")
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .show()
     }
