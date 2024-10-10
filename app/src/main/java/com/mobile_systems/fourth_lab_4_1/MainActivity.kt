@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton: Button
+    private lateinit var backButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
+        backButton = findViewById(R.id.back_button)
 
         if (savedInstanceState != null) {
             currentIndex = savedInstanceState.getInt("currentIndex", 0)
@@ -46,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         trueButton.setOnClickListener { checkAnswer(true) }
         falseButton.setOnClickListener { checkAnswer(false) }
         nextButton.setOnClickListener { moveToNext() }
-
+        backButton.setOnClickListener { moveToPrevious() }
         updateQuestion()
     }
 
@@ -88,6 +90,13 @@ class MainActivity : AppCompatActivity() {
     private fun moveToNext() {
         currentIndex = (currentIndex + 1) % questions.size
         updateQuestion()
+    }
+
+    private fun moveToPrevious() {
+        if (currentIndex > 0) {
+            currentIndex--
+            updateQuestion()
+        }
     }
 
     private fun showResult() {
