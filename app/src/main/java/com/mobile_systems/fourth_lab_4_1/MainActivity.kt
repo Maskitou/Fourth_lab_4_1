@@ -15,9 +15,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class MainActivity : AppCompatActivity() {
 
     private val questions = listOf(
-        Question("Is the sky blue?", true),
-        Question("Is the grass red?", false),
-        Question("Is water wet?", true)
+        Question("Канберра это столица Австралии?", true),
+        Question("Сейчас зима?", false),
+        Question("Мокрая ли вода?", true)
     )
 
     private var currentIndex = 0
@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
         val correctAnswer = questions[currentIndex].answer
         if (userAnswer == correctAnswer) {
             correctAnswersCount++
-            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Правильно!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Неверно!", Toast.LENGTH_SHORT).show()
         }
         trueButton.visibility = View.INVISIBLE
         falseButton.visibility = View.INVISIBLE
@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun showResult() {
         MaterialAlertDialogBuilder(this)
-            .setTitle("Quiz Finished")
-            .setMessage("You got $correctAnswersCount out of ${questions.size} correct!")
+            .setTitle("Конец")
+            .setMessage("У вас $correctAnswersCount ответов из ${questions.size} правильные!")
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .show()
     }
